@@ -14,3 +14,7 @@ A common practice is to define a default setup for your component, and then over
 
 - [Simple example](./src/1-simple-example/SimpleSUT.test.tsx) - has configurable component properties.
 - [Advanced example](./src/2-advanced-example/AdvancedSUT.test.tsx) - has configurable api stubs.
+
+## How to run
+
+To run the tests, run `npm test` in the root folder.
