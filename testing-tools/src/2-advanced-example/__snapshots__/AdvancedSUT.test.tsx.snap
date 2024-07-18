@@ -15,3 +15,11 @@ exports[`renders correctly by default 1`] = `
   </ul>
 </div>
 `;
+
+exports[`renders correctly when api is loading 1`] = `
+<div>
+  <div>
+    Loader
+  </div>
+</div>
+`;

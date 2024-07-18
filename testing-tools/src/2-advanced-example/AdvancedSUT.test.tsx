@@ -37,3 +37,15 @@ test("renders correctly by default", () => {
 
   expect(container).toMatchSnapshot();
 });
+
+test("renders correctly when api is loading", () => {
+  const { container } = setup.run({
+    stubs: {
+      useFetchPersonInfo: {
+        isLoading: true,
+      },
+    },
+  });
+
+  expect(container).toMatchSnapshot();
+});
