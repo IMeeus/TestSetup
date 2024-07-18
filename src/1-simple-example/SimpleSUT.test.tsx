@@ -39,7 +39,7 @@ test("overrides all items correctly", () => {
 });
 
 test("overrides specific item correctly", () => {
-  setup.run2((props) => {
+  setup.run((props) => {
     props.items[0] = "expectedItem";
   });
 

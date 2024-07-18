@@ -9,13 +9,14 @@ export class TestSetup<TConfig, TResult> {
     this.setupFunc = setupFunc;
   }
 
-  run(overrides: DeepPartial<TConfig> = {}): TResult {
-    return this.setupFunc({ ...this.defaultConfig, ...overrides });
-  }
+  run(override?: DeepPartial<TConfig> | ((config: TConfig) => void)): TResult {
+    let config = { ...this.defaultConfig };
 
-  run2(overrideFunc: (config: TConfig) => void = () => {}): TResult {
-    const config = { ...this.defaultConfig };
-    overrideFunc(config);
+    if (typeof override === "function") {
+      override(this.defaultConfig);
+    } else {
+      config = { ...config, ...override };
+    }
 
     return this.setupFunc(config);
   }
