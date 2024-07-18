@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { SUT, ISUTProps } from "./SUT";
+import { SUT, ISUTProps } from "./SimpleSUT";
 import { TestSetup } from "../../lib/test-setup";
 
 const defaultProps: ISUTProps = {
