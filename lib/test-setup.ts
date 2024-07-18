@@ -13,7 +13,7 @@ export class TestSetup<TConfig, TResult> {
     let config = { ...this.defaultConfig };
 
     if (typeof override === "function") {
-      override(this.defaultConfig);
+      override(config);
     } else {
       config = { ...config, ...override };
     }
