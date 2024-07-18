@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with default props 1`] = `
+<div>
+  <h1>
+    someTitle
+  </h1>
+  <ul>
+    <li>
+      someItem1
+    </li>
+    <li>
+      someItem2
+    </li>
+  </ul>
+</div>
+`;
