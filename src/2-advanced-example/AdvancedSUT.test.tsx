@@ -4,23 +4,26 @@ import { TestSetup } from "../../lib/test-setup";
 import { ApiResponse, PersonInfo } from "./useFetchPersonInfo";
 import * as useFetchPersonInfo from "./useFetchPersonInfo";
 
-const defaultProps: ISUTProps = {
-  title: "someTitle",
-};
-
-const defaultUseFetchPersonInfo: ApiResponse<PersonInfo> = {
-  isOk: true,
-  isLoading: false,
-  data: {
-    firstName: "Rubber",
-    lastName: "Duck",
-  },
-};
-
-const defaultConfig = {
-  props: defaultProps,
+type SetupConfig = {
+  props: ISUTProps;
   stubs: {
-    useFetchPersonInfo: defaultUseFetchPersonInfo,
+    useFetchPersonInfo: ApiResponse<PersonInfo>;
+  };
+};
+
+const defaultConfig: SetupConfig = {
+  props: {
+    title: "someTitle",
+  },
+  stubs: {
+    useFetchPersonInfo: {
+      isOk: true,
+      isLoading: false,
+      data: {
+        firstName: "Rubber",
+        lastName: "Duck",
+      },
+    },
   },
 };
 
