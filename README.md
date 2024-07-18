@@ -6,9 +6,9 @@ This repository showcases the [`TestSetup`](./lib/test-setup.ts) class. Using th
 
 ## Default setup pattern
 
-When writing tests for a React component you want to avoid repeating, in each test, the full setup to render it. For each test, we only want to setup the specific parts that we're interested in. This keeps our test clear and scoped to the problem at hand.
+When writing tests for a React component you want to avoid repeating, in each test, the full setup to render it. We only want to setup the specific parts that we're interested in. This keeps our test clear and scoped to the problem at hand.
 
-A common practice is to define a default setup for your component, and then override specific parts of that default setup in each test. The [`TestSetup`](./lib/test-setup.ts) class extracts the boilerplate-code to make this possible.
+A common practice is to define a default setup for your component, and then override specific parts of it in each test. The [`TestSetup`](./lib/test-setup.ts) class extracts the boilerplate-code to make this possible.
 
 ## Examples
 
