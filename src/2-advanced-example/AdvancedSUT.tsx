@@ -1,4 +1,4 @@
-import { useFetchPersonInfo } from "./useApi";
+import { useFetchPersonInfo } from "./useFetchPersonInfo";
 
 export interface ISUTProps {
   title: string;

@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import { SUT, ISUTProps } from "./AdvancedSUT";
 import { TestSetup } from "../../lib/test-setup";
-import { ApiResponse, PersonInfo } from "./useApi";
-import * as useFetchPersonInfo from "./useApi";
+import { ApiResponse, PersonInfo } from "./useFetchPersonInfo";
+import * as useFetchPersonInfo from "./useFetchPersonInfo";
 
 const defaultProps: ISUTProps = {
   title: "someTitle",
