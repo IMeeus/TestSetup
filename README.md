@@ -65,9 +65,13 @@ params.messages[1] = "override";
 logMessage(params);
 ```
 
-What you see in the example above is exactly what `ConfigurableCallback` does. It just removes some of the boilerplate to make this possible, makes it look a bit cleaner and makes your code express more intent.
+`ConfigurableCallback` is just a wrapper for the code you see above. All it does is:
 
-# Application in FE testing
+- Removes some of the boilerplate to make this possible.
+- Makes your code look a bit cleaner.
+- Makes your code express more intent.
+
+# Application in React FE testing
 
 A `ConfigurableCallback` is particularly usefull when creating `setup functions` for your tests. Setup functions are an alternative to `beforeEach`. It is strongly advised to use these, because it [avoids nesting when you're testing](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing), a recommendation of the creator of React Testing Library, Kent C. Dodds.
 
