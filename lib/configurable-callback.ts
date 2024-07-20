@@ -1,12 +1,12 @@
 import { DeepPartial } from "./deep-partial";
 
-export class TestSetup<TConfig, TResult> {
+export class ConfigurableCallback<TConfig, TResult> {
   private defaultConfig: TConfig;
-  private setupFunc: (config: TConfig) => TResult;
+  private callback: (config: TConfig) => TResult;
 
-  constructor(defaultConfig: TConfig, setupFunc: (config: TConfig) => TResult) {
+  constructor(defaultConfig: TConfig, callback: (config: TConfig) => TResult) {
     this.defaultConfig = defaultConfig;
-    this.setupFunc = setupFunc;
+    this.callback = callback;
   }
 
   run(override?: DeepPartial<TConfig> | ((config: TConfig) => void)): TResult {
@@ -19,6 +19,6 @@ export class TestSetup<TConfig, TResult> {
       override(config);
     }
 
-    return this.setupFunc(config);
+    return this.callback(config);
   }
 }

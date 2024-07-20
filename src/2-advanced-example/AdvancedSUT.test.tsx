@@ -1,17 +1,17 @@
 import { render } from "@testing-library/react";
 import { SUT, ISUTProps } from "./AdvancedSUT";
-import { TestSetup } from "../../lib/test-setup";
+import { ConfigurableCallback } from "../../lib/configurable-callback";
 import { ApiResponse, PersonInfo } from "./useFetchPersonInfo";
 import * as useFetchPersonInfo from "./useFetchPersonInfo";
 
-type SetupConfig = {
+type ISetupProps = {
   props: ISUTProps;
   stubs: {
     useFetchPersonInfo: ApiResponse<PersonInfo>;
   };
 };
 
-const defaultConfig: SetupConfig = {
+const defaultSetup: ISetupProps = {
   props: {
     title: "someTitle",
   },
@@ -27,22 +27,26 @@ const defaultConfig: SetupConfig = {
   },
 };
 
-const setup = new TestSetup(defaultConfig, (config) => {
+const Setup = new ConfigurableCallback(defaultSetup, (setup) => {
   jest
     .spyOn(useFetchPersonInfo, "useFetchPersonInfo")
-    .mockReturnValue(config.stubs.useFetchPersonInfo);
+    .mockReturnValue(setup.stubs.useFetchPersonInfo);
 
-  return { ...render(<SUT {...config.props} />) };
+  // You may consider a render as a part of your Act, and want to keep it separate from your Arrange/Setup.
+  // In this case, you can split the render off to it's own ConfigurableCallback.
+  // I don't do it, because I personally see a render as a part your Setup/Arrange.
+  // Depends on your taste I guess.
+  return { ...render(<SUT {...setup.props} />) };
 });
 
 test("renders correctly by default", () => {
-  const { container } = setup.run();
+  const { container } = Setup.run();
 
   expect(container).toMatchSnapshot();
 });
 
 test("renders correctly when api is loading", () => {
-  const { container } = setup.run({
+  const { container } = Setup.run({
     stubs: {
       useFetchPersonInfo: {
         isLoading: true,

@@ -1,24 +1,24 @@
 import { render, screen } from "@testing-library/react";
 import { SUT, ISUTProps } from "./SimpleSUT";
-import { TestSetup } from "../../lib/test-setup";
+import { ConfigurableCallback } from "../../lib/configurable-callback";
 
 const defaultProps: ISUTProps = {
   title: "someTitle",
   items: ["someItem1", "someItem2"],
 };
 
-const setup = new TestSetup(defaultProps, (props) => {
+const Render = new ConfigurableCallback(defaultProps, (props) => {
   return { ...render(<SUT {...props} />) };
 });
 
 test("renders correctly with default props", () => {
-  const { container } = setup.run();
+  const { container } = Render.run();
 
   expect(container).toMatchSnapshot();
 });
 
 test("overrides title correctly", () => {
-  setup.run({
+  Render.run({
     title: "expectedTitle",
   });
 
@@ -27,7 +27,7 @@ test("overrides title correctly", () => {
 });
 
 test("overrides all items correctly", () => {
-  setup.run({
+  Render.run({
     items: ["expectedItem"],
   });
 
@@ -39,7 +39,7 @@ test("overrides all items correctly", () => {
 });
 
 test("overrides specific item correctly", () => {
-  setup.run((props) => {
+  Render.run((props) => {
     props.items[0] = "expectedItem";
   });
 
