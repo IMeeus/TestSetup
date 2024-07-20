@@ -16,19 +16,19 @@ const LogMessage = new ConfigurableCallback(defaultParams, (params) => {
 ```
 
 ```ts
+// Result: "Information: Hello override!"
+
 LogMessage.run({
   message: "Hello override!",
 });
-
-// Result: "Information: Hello override!"
 ```
 
 ```ts
+// Result: "Information: Hello override!"
+
 LogMessage.run((params) => {
   params.message = "Hello override!";
 });
-
-// Result: "Information: Hello override!"
 ```
 
 ## Can't I achieve the same by just using language features?
@@ -52,14 +52,20 @@ const defaultParams = {
 function logMessage(params = defaultParams) {
   console.log(params.logLevel, ": ", params.messages.join(""));
 }
+```
 
+```ts
 // To add to the message - Result: Hello world!
+
 logMessage({
   ...defaultParams,
   messages: [...defaultParams.messages, "!"],
 });
+```
 
+```ts
 // To update the message - Result: Hello override
+
 const params = { ...defaultParams };
 params.messages[1] = "override";
 logMessage(params);
